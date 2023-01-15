@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Eklentiler/grass.png" type="Texture" id=1]
+[ext_resource path="res://main.gd" type="Script" id=2]
+[ext_resource path="res://Eklentiler/apple.png" type="Texture" id=3]
+[ext_resource path="res://Eklentiler/Savec-gxew6.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 4 )
+
+[node name="main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="arkaplan" type="TextureRect" parent="."]
+margin_right = 800.0
+margin_bottom = 800.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="apple" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( 20, 20 )
+
+[node name="yilan" type="Node" parent="."]
+
+[node name="body 0" type="ColorRect" parent="yilan"]
+margin_left = 40.0
+margin_right = 80.0
+margin_bottom = 40.0
+color = Color( 0, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body 1" type="ColorRect" parent="yilan"]
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_left = 752.0
+margin_top = 4.0
+margin_right = 794.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
